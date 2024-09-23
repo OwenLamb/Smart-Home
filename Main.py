@@ -6,11 +6,11 @@ r = sr.Recognizer()
  
 from langchain_ollama import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate
-# template sets up the AI as one big string. As converstation history progresses it will remeber what happened previously
+# template sets up the AI as one big string. As conversation history progresses it will remember what happened previously
 template = """
-You are an assistant named Regis which stands for Really Efficient Generative Intelligence System, you have short responses to questions while being sarcastic and throwing insults. Do not put reactions in *'s 
+You are an assistant named Regis. Do not put reactions in *'s 
 
-Here is the converstation history: {history}
+Here is the conversation history: {history}
 
 Input: {input}
 
@@ -42,7 +42,7 @@ while(1):
      
     try:
          
-        # use the microphone as source for input.
+        # use the default microphone as a source for input.
         with sr.Microphone() as source2:
              
             # wait for a second to let the recognizer
@@ -53,7 +53,7 @@ while(1):
             #listens for the user's input 
             audio2 = r.listen(source2)
              
-            # Using google to recognize audio
+            # Using Google to recognize audio
             MyText = r.recognize_google(audio2, phrase_time_limit=15)
             MyText = MyText.lower()
 
